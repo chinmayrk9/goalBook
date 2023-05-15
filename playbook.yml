@@ -1,8 +1,6 @@
 ---
 - name: Docker Pull and Run
   hosts: all
-  remote_user: root
-  become: true
   tasks:
       
     - name: copy docker-compose file

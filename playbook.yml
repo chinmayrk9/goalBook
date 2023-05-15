@@ -1,0 +1,25 @@
+---
+- name: Docker Pull and Run
+  hosts: all
+  remote_user: root
+  become: true
+  tasks:
+      
+    - name: copy docker-compose file
+      copy:
+        src: ./docker-compose.yml
+        dest: ./
+
+    - name: remove containers using docker-compose
+      command: docker-compose down 
+      
+
+    - name: Remove spring existing image for fresh pull
+      docker_image:
+        name: chinmayrk9/goalbook
+        state: absent  
+
+    - name: Create containers using docker-compose
+      command: docker-compose up -d
+      
+        

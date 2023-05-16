@@ -76,7 +76,7 @@ public class PostServiceImp implements PostService {
 
 
 	@Override
-	public void like(LikeJson likeJson) {
+	public int like(LikeJson likeJson) {
 		// TODO Auto-generated method stub
 		try {
 			
@@ -102,16 +102,18 @@ public class PostServiceImp implements PostService {
 			{
 			notificationDao.save(notification);
 			likeDao.save(like);
+			return 1;
 			}
 			else
 			{
 			int id=	likeDao.getLike(post,user);
 			likeDao.deleteById(id);
+			return 0;
 			}
 		}
 		catch(Exception e)
 		{
-			
+			return -1;
 		}
 	}
 

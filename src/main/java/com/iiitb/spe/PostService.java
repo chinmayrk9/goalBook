@@ -12,7 +12,7 @@ import com.iiitb.spe.service.User;
 public interface PostService {
 	
 	public int createPost(PostJson post);
-	public void like(LikeJson likeJson);
+	public int like(LikeJson likeJson);
 	public void comment(CommentJson commentJson);
 	public List<User> viewLike(String post_id);
 	public List<Comment> viewComment(String post_id);

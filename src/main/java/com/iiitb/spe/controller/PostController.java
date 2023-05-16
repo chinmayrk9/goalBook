@@ -155,9 +155,15 @@ public class PostController {
 		{
 			logger.info("Like post");
 
-			this.postService.like(likeJson);
+			int res=this.postService.like(likeJson);
 
+			if(res==1)
+			{
 			return new ResponseEntity<>(true,HttpStatus.OK);
+			}
+			else
+				return new ResponseEntity<>(false,HttpStatus.OK);
+				
 		}
 		catch(Exception e)
 		{
